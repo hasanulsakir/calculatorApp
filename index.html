@@ -55,9 +55,17 @@
         <tr>
 
             <td align="center" width="25%"><button class="number">0</button></td>
-            <td align="center" width="25%"><button id="clear">c</button></td>
-            <td align="center" width="25%"><button id="sum">=</button></td>
+            <td align="center" width="25%"><button id="aClear">ac</button></td>
+            <td align="center" width="25%"><button id="c">c</button></td>
             <td align="center" width="25%"><button class="number">/</button></td>
+
+
+
+        </tr>
+        <tr>
+
+
+            <td align="center" width="100%" colspan="4"><button style="width: 100%;" id="sum">=</button></td>
 
 
 
@@ -73,22 +81,44 @@
                 output += e.innerText;
                 document.getElementById('output').value = output
 
-                console.log(output)
+                // console.log(output)
             })
         });
 
 
-        document.getElementById('clear').addEventListener('click', function () {
+        document.getElementById('aClear').addEventListener('click', function () {
             document.getElementById('output').value = "0";
             output = "";
         })
 
+
         document.getElementById('sum').addEventListener('click', function () {
             var sum = eval(output);
-            document.getElementById('output').value = sum;
-            output = sum;
+            if (sum == undefined) {
+                output = ''
+            } else {
+                document.getElementById('output').value = sum;
+                output = sum;
+            }
         })
+        document.getElementById('c').addEventListener('click', function () {
+            var str = document.getElementById('output').value;
+            var sLen = str.length;
+            var c = str.slice(0, sLen - 1);
 
+            if (c == "") {
+                var newSt = output.replace(output, 0);
+                output = '';
+                document.getElementById('output').value = newSt;
+
+            } else {
+
+
+                document.getElementById('output').value = c;
+                output = c
+                console.log(c)
+            }
+        })
 
 
 
