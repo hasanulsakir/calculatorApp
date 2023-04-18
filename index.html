@@ -7,21 +7,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        table {
+            box-shadow: 0px 0px 16px 0px #00000042;
+            padding: 10px;
+        }
+
+        button#sum {
+            border: 0;
+            padding: 0.8rem;
+            border-radius: 9px;
+            box-shadow: 0px 2px 10px 1px #00000040;
+            cursor: pointer;
+            margin: 1rem 0;
+        }
+
         input#output {
-            padding: 10px 40px;
-            border: 0p;
+            padding: 50px;
+            border: 0px;
             border: none;
-            box-shadow: inset 0px 0px 4px 0px #00d0f852, 0px 0px 7px 1px #00d0f852;
+            box-shadow: inset 0px 0px 4px 2px #0000000f, 0px 0px 7px 1px #00000000;
             border-radius: 3px;
+        }
+
+        * {
+            font-size: 1.3rem;
+        }
+
+        button:not(#sum) {
+            padding: 20px;
+            border: 0;
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0px 0px 4px 1px #00000024;
         }
     </style>
 </head>
 
 <body>
 
-    <table align="center" border="1" cellspacing="0" cellpadding="4">
+    <table align="center" border="0" cellspacing="0" cellpadding="4">
         <tr>
-            <td width="80%" align="center" colspan="4">
+            <td width="100%" align="center" colspan="4">
                 <input type="text" style="text-align: center;" readonly disabled name="outPut" id="output"
                     class="result" value="0">
             </td>
@@ -74,6 +112,7 @@
     <script>
         var op = document.getElementById('output')
         var a = document.querySelectorAll('.number');
+
         var output = "";
         a.forEach(e => {
             e.addEventListener('click', function () {
@@ -101,6 +140,7 @@
                 output = sum;
             }
         })
+
         document.getElementById('c').addEventListener('click', function () {
             var str = document.getElementById('output').value;
             var sLen = str.length;
